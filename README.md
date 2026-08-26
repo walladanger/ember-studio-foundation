@@ -1,6 +1,6 @@
 # Ember Studio Foundation
 
-Reusable Windows desktop application foundation built with React, TypeScript, Vite, and Tauri.
+Reusable Windows desktop application foundation built with React, TypeScript, Vite, and Tauri. Ember Studio is intentionally business-domain neutral so it can become the starting point for data, media, AI, monitoring, file-viewing, vehicle-data, or other specialized desktop applications.
 
 The project provides a smoky-black, blue-accented desktop shell for future applications, including:
 
@@ -11,6 +11,8 @@ The project provides a smoky-black, blue-accented desktop shell for future appli
 - Generic file, settings, notification, dialog, tooltip, and feedback service boundaries
 - Placeholder Data Explorer and foundation welcome experience
 - Typed service contracts for future Java, Python, Rust, C#, or local HTTP/WebSocket services
+
+The application uses an opaque smoky-black main surface with restrained blue accents. Secondary menus, popovers, and information panels may use smoky glass treatment without making the primary workspace transparent.
 
 ## Development
 
@@ -30,6 +32,18 @@ npm run build
 
 For native Windows development, install the Tauri v2 prerequisites and run the project with the Tauri CLI from a Windows machine. Native compilation and Windows runtime validation are intentionally kept separate from the browser-compatible frontend tests.
 
+## Foundation conventions
+
+- Keep reusable infrastructure in the shared folders listed below.
+- Put application-specific behavior under `src/features/<feature-name>`.
+- Keep file processing, persistence, and long-running work behind typed services instead of React components.
+- Use the project-owned design tokens and shared feedback components when adding UI.
+- Treat Tauri commands as a native boundary with JSON-compatible contracts.
+
+## Windows acceptance
+
+The frontend test suite, TypeScript project check, and Vite production build run in this repository. Before shipping a Windows application based on this template, also validate the native Tauri build and runtime behavior on Windows, including borderless dragging, resize edges and corners, minimize/maximize/restore, multi-monitor placement, per-monitor DPI, external feature windows, and saved window state.
+
 ## Architecture
 
 - `src/app` — application composition
@@ -41,6 +55,10 @@ For native Windows development, install the Tauri v2 prerequisites and run the p
 - `src/features` — future application-specific features
 - `src-tauri` — native Windows/Tauri commands and persistence boundary
 - `docs/architecture/backend-boundary.md` — backend integration guidance
+
+## Backend integration
+
+Future local services can replace adapters without changing feature components. A Java, Python, Rust, or C# worker can communicate through a Tauri command, local HTTP, WebSocket, JSON message channel, or another documented transport. Long-running work should report progress and cancellation asynchronously rather than blocking the React UI thread.
 
 The main application surface is opaque. Smoky glass treatment is reserved for secondary panels, popovers, and overlays.
 
