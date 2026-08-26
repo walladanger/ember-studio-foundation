@@ -62,6 +62,14 @@ Future local services can replace adapters without changing feature components. 
 
 The main application surface is opaque. Smoky glass treatment is reserved for secondary panels, popovers, and overlays.
 
+## Visual previews
+
+Click either preview to open the full-size image on GitHub.
+
+[![Ember Studio shell with Data Explorer and color profiles](docs/screenshots/ember-studio-color-profiles.jpg)](docs/screenshots/ember-studio-color-profiles.jpg)
+
+[![Collapsed navigation with hover tooltip](docs/screenshots/ember-studio-collapsed-navigation.jpg)](docs/screenshots/ember-studio-collapsed-navigation.jpg)
+
 ## License
 
 Released under the MIT License. See [LICENSE](./LICENSE).
