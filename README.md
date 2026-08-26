@@ -60,6 +60,16 @@ The frontend test suite, TypeScript project check, and Vite production build run
 
 Future local services can replace adapters without changing feature components. A Java, Python, Rust, or C# worker can communicate through a Tauri command, local HTTP, WebSocket, JSON message channel, or another documented transport. Long-running work should report progress and cancellation asynchronously rather than blocking the React UI thread.
 
+## GitHub automation
+
+The repository includes three lightweight GitHub automations:
+
+- **CI** runs the frontend tests, TypeScript check, Vite build, and a Windows native `cargo check`.
+- **CodeQL** scans the JavaScript/TypeScript source for security problems and coding errors.
+- **Dependabot** opens weekly dependency update pull requests for npm and Cargo packages.
+
+These checks are designed to run before changes are merged into `main`.
+
 The main application surface is opaque. Smoky glass treatment is reserved for secondary panels, popovers, and overlays.
 
 ## Visual previews
