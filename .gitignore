@@ -1,0 +1,15 @@
+node_modules/
+dist/
+target/
+.env
+.env.*
+!.env.example
+.DS_Store
+coverage/
+.superdesign/tmp/
+generated_images/
+upload/
+.superpowers/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
