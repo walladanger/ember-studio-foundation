@@ -1,5 +1,6 @@
 {
   "name": "ember-studio",
+  "description": "Reusable React, TypeScript, and Tauri foundation for premium Windows desktop applications.",
   "private": true,
   "version": "0.1.0",
   "type": "module",
