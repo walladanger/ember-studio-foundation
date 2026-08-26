@@ -1,7 +1,7 @@
 [package]
 name = "ember-studio"
 version = "0.1.0"
-description = "Ember Studio desktop application"
+description = "Reusable Tauri foundation for premium Windows desktop applications"
 authors = ["Ember Studio"]
 edition = "2021"
 
