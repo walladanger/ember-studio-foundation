@@ -16,6 +16,8 @@ The application uses an opaque smoky-black main surface with restrained blue acc
 
 ## Development
 
+Requires Node.js 20.19 or newer and npm.
+
 Install dependencies and start the frontend preview:
 
 ```bash
