@@ -68,8 +68,9 @@ export function getColorHex(family: string, shade?: ColorShade): string {
   return getColor(family, shade);
 }
 
-function withAlpha(hex: string, alpha: string): string {
-  return `${hex}${alpha}`;
+function withAlpha(color: string, alphaHex: string): string {
+  const alphaPercent = Math.round((parseInt(alphaHex, 16) / 255) * 100);
+  return `color-mix(in oklab, ${color} ${alphaPercent}%, transparent)`;
 }
 
 export function buildAccentTokens(selection: ColorProfileSelection): AccentTokens {

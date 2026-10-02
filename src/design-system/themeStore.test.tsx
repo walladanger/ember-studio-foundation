@@ -28,9 +28,9 @@ test('applies the selected profile to semantic CSS variables', () => {
     </ThemeProvider>,
   );
 
-  expect(screen.getByTestId('accent-value')).toHaveTextContent('#22d3ee');
-  expect(document.documentElement.style.getPropertyValue('--accent')).toBe('#22d3ee');
-  expect(document.documentElement.style.getPropertyValue('--focus-ring')).toBe('#22d3ee');
+  expect(screen.getByTestId('accent-value')).toHaveTextContent('oklch(78.9% 0.154 211.53)');
+  expect(document.documentElement.style.getPropertyValue('--accent')).toBe('oklch(78.9% 0.154 211.53)');
+  expect(document.documentElement.style.getPropertyValue('--focus-ring')).toBe('oklch(78.9% 0.154 211.53)');
 });
 
 test('updates only accent variables when a palette swatch is selected', () => {
@@ -45,7 +45,7 @@ test('updates only accent variables when a palette swatch is selected', () => {
 
   fireEvent.click(screen.getByRole('button', { name: 'Choose cyan' }));
 
-  expect(document.documentElement.style.getPropertyValue('--accent')).toBe('#22d3ee');
+  expect(document.documentElement.style.getPropertyValue('--accent')).toBe('oklch(78.9% 0.154 211.53)');
   expect(getComputedStyle(document.documentElement).getPropertyValue('--surface')).toBe(surfaceBefore);
   expect(getComputedStyle(document.documentElement).getPropertyValue('--divider')).toBe(dividerBefore);
 });
@@ -60,7 +60,7 @@ test('uses and persists the profile selection through generic settings', async (
     </SettingsProvider>,
   );
 
-  expect(screen.getByTestId('accent-value')).toHaveTextContent('#22d3ee');
+  expect(screen.getByTestId('accent-value')).toHaveTextContent('oklch(78.9% 0.154 211.53)');
   await user.click(screen.getByRole('button', { name: 'Choose cyan' }));
   await expect(service.load()).resolves.toMatchObject({ colorProfile: { family: 'cyan', shade: 400 } });
 });
