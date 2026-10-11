@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import {
-  getColorHex,
+  getColorValue,
   getColorProfileCatalog,
   getColorShades,
   getReferenceColorFamilies,
@@ -57,7 +57,7 @@ export function ColorProfilePopover({ value, onChange, onClose }: ColorProfilePo
                 type="button"
                 aria-label={`${family} family (${family}-${familyShade})`}
                 aria-pressed={value.family === family}
-                style={{ '--swatch-color': getColorHex(family, familyShade) } as CSSProperties}
+                style={{ '--swatch-color': getColorValue(family, familyShade) } as CSSProperties}
                 onClick={() => onChange({ family, shade: familyShade })}
               />
             );
@@ -78,7 +78,7 @@ export function ColorProfilePopover({ value, onChange, onClose }: ColorProfilePo
               type="button"
               aria-label={`${value.family}-${shade}`}
               aria-pressed={value.shade === shade}
-              style={{ '--swatch-color': getColorHex(value.family, shade) } as CSSProperties}
+              style={{ '--swatch-color': getColorValue(value.family, shade) } as CSSProperties}
               onClick={() => onChange({ family: value.family, shade })}
             >
               <span className="sr-only">{value.family}-{shade}</span>
@@ -98,7 +98,7 @@ export function ColorProfilePopover({ value, onChange, onClose }: ColorProfilePo
               className="color-profile-popover__reference-swatch"
               key={family}
               aria-label={`${family} reference swatch`}
-              style={{ backgroundColor: getColorHex(family) }}
+              style={{ backgroundColor: getColorValue(family) }}
             />
           ))}
         </div>

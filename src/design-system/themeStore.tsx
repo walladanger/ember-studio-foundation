@@ -65,7 +65,7 @@ export function ThemeProvider({ children, initialSelection }: ThemeProviderProps
   }, [appSettings]);
   useEffect(() => {
     if (!initialSelection && appSettings) setSelection(appSettings.settings.colorProfile);
-  }, [appSettings?.settings.colorProfile, initialSelection]);
+  }, [appSettings, initialSelection]);
   const tokens = useMemo(() => buildAccentTokens(selection), [selection]);
   const settings = useMemo<ThemeSettings>(
     () => ({ colorProfile: profileForSelection(selection) }),

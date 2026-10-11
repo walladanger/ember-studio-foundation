@@ -54,7 +54,7 @@ function getColor(family: string, shade: ColorShade): string {
   return value;
 }
 
-export function getColorHex(family: string, shade?: ColorShade): string {
+export function getColorValue(family: string, shade?: ColorShade): string {
   const value = palette[family];
 
   if (typeof value === 'string') {
@@ -68,8 +68,14 @@ export function getColorHex(family: string, shade?: ColorShade): string {
   return getColor(family, shade);
 }
 
-function withAlpha(color: string, alphaHex: string): string {
-  const alphaPercent = Math.round((parseInt(alphaHex, 16) / 255) * 100);
+const ACCENT_SOFT_OPACITY = 0.15;
+const SELECTED_BACKGROUND_OPACITY = 0.12;
+
+function withAlpha(color: string, opacity: number): string {
+  // Tailwind v4 resolves colors to oklch strings, so alpha is applied via
+  // color-mix rather than the legacy 8-digit hex form. oklab interpolation is
+  // used for perceptually uniform results on accent-derived surfaces.
+  const alphaPercent = Math.round(opacity * 100);
   return `color-mix(in oklab, ${color} ${alphaPercent}%, transparent)`;
 }
 
@@ -82,9 +88,9 @@ export function buildAccentTokens(selection: ColorProfileSelection): AccentToken
   return {
     accent,
     accentStrong,
-    accentSoft: withAlpha(accent, '26'),
+    accentSoft: withAlpha(accent, ACCENT_SOFT_OPACITY),
     focusRing: accent,
-    selectedBackground: withAlpha(accent, '1f'),
+    selectedBackground: withAlpha(accent, SELECTED_BACKGROUND_OPACITY),
     accentText: accent,
   };
 }
