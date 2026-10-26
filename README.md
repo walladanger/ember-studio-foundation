@@ -4,8 +4,7 @@ Reusable Windows desktop application foundation built with React, TypeScript, Vi
 
 ![CI](https://img.shields.io/github/actions/workflow/status/walladanger/ember-studio-foundation/ci.yml?branch=main&label=CI) ![License](https://img.shields.io/github/license/walladanger/ember-studio-foundation)
 
-<!-- SCREENSHOT PLACEHOLDER: hero image of ember studio -->
-_Screenshot coming soon._
+[![Ember Studio shell with Data Explorer and color profiles](docs/screenshots/ember-studio-color-profiles.jpg)](docs/screenshots/ember-studio-color-profiles.jpg)
 
 ## Features
 
@@ -38,7 +37,7 @@ flowchart TD
     Windows --> Tauri
 ```
 
-React + TypeScript + Vite owns the presentation and interaction layers in `src`. Tauri v2/Rust owns OS boundaries and persistence in `src-tauri`. Shared shell behavior is organized into focused modules, while business-specific code remains under `src/features/`. See [backend integration guidance](docs/architecture/backend-boundary.md) for more details.
+React + TypeScript + Vite owns the presentation and interaction layers in `src`. Tauri v2/Rust owns OS boundaries and persistence in `src-tauri`. Shared shell behavior is organized into focused modules, while business-specific code remains under `src/features/`. See [backend integration guidance](docs/architecture/backend-boundary.md) and the [foundation guide](docs/foundation-guide.md) for more details.
 
 ## Quick start
 
@@ -58,8 +57,6 @@ npm run build
 | `src-tauri/tauri.conf.json` | Tauri configuration | Included |
 
 ## Screenshots
-
-[![Ember Studio shell with Data Explorer and color profiles](docs/screenshots/ember-studio-color-profiles.jpg)](docs/screenshots/ember-studio-color-profiles.jpg)
 
 [![Collapsed navigation with hover tooltip](docs/screenshots/ember-studio-collapsed-navigation.jpg)](docs/screenshots/ember-studio-collapsed-navigation.jpg)
 
