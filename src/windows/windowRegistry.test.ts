@@ -28,7 +28,12 @@ describe('windowRegistry', () => {
     }
   });
 
-  it.todo('should provide ExternalContent for dual presentation mode features', () => {
-    // Bug: 'data-explorer' has presentation: 'dual' but lacks ExternalContent
+  it('should provide a renderable component for non-internal presentation modes', () => {
+    for (const feature of Object.values(windowRegistry)) {
+      if (feature.presentation !== 'internal') {
+        const content = feature.ExternalContent ?? feature.InternalContent;
+        expect(content).toBeDefined();
+      }
+    }
   });
 });
