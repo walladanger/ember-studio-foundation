@@ -21,20 +21,32 @@ Reusable Windows desktop application foundation built with React, TypeScript, Vi
 ```mermaid
 flowchart TD
     App[src/app] --> Shell[src/shell]
-    App --> Features[src/features]
     App --> Windows[src/windows]
     App --> ExtWindows[src/external-windows]
-    Shell --> DesignSystem[src/design-system]
+    App --> Settings[src/settings]
+    App --> DesignSystem[src/design-system]
+    App --> Dialogs[src/dialogs]
+    App --> Notifications[src/notifications]
     Shell --> Navigation[src/navigation]
-    Features --> Services[src/services]
-    Services --> FileSystem[src/file-system]
-    Services --> Settings[src/settings]
-    Services --> Dialogs[src/dialogs]
-    Services --> Notifications[src/notifications]
-    Services --> Tooltips[src/tooltips]
-    Services --> Feedback[src/feedback]
-    ExtWindows --> Tauri[src-tauri]
+    Shell --> Settings
+    Shell --> Windows
+    Shell --> Features[src/features]
+    Windows --> DesignSystem
+    Windows --> Dialogs
+    Windows --> Feedback[src/feedback]
+    Windows --> FileSystem[src/file-system]
+    Windows --> Notifications
+    Windows --> Settings
+    Windows --> Services[src/services]
+    Windows --> Shell
+    ExtWindows --> Shell
+    ExtWindows --> Windows
+    Settings --> DesignSystem
+    Settings --> Services
+    Shell --> Tauri[src-tauri]
     Windows --> Tauri
+    ExtWindows --> Tauri
+    Settings --> Tauri
 ```
 
 React + TypeScript + Vite owns the presentation and interaction layers in `src`. Tauri v2/Rust owns OS boundaries and persistence in `src-tauri`. Shared shell behavior is organized into focused modules, while business-specific code remains under `src/features/`. See [backend integration guidance](docs/architecture/backend-boundary.md) and the [foundation guide](docs/foundation-guide.md) for more details.

@@ -2,11 +2,18 @@
 
 The application uses an opaque smoky-black main surface with restrained blue accents. Secondary menus, popovers, and information panels may use smoky glass treatment without making the primary workspace transparent.
 
-The main application surface is opaque. Smoky glass treatment is reserved for secondary panels, popovers, and overlays.
-
 ## Foundation conventions
 
-- Keep reusable infrastructure in the shared folders listed below.
+- Keep reusable infrastructure in the shared folders listed below:
+  - `src/app`
+  - `src/shell`
+  - `src/design-system`
+  - `src/windows`
+  - `src/external-windows`
+  - the shared service folders
+  - `src/features`
+  - `src-tauri`
+  - `docs/architecture/backend-boundary.md`
 - Put application-specific behavior under `src/features/<feature-name>`.
 - Keep file processing, persistence, and long-running work behind typed services instead of React components.
 - Use the project-owned design tokens and shared feedback components when adding UI.
