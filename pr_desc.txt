@@ -1,0 +1,18 @@
+Adds focused unit tests for `src/shell/TitleBar.tsx` following repository guidelines.
+
+### Covered
+- `shouldStartTitleBarDragging`: Asserts real behaviour on primary/non-primary buttons, targets within interactive elements, and null targets.
+- `TitleBar`: Verifies rendered text, aria attributes/roles, correct handlers called (provided vs. native window service), and ensures dragging initiates only on primary pointer down for the main bar and not buttons.
+
+### Bugs Found
+- In `shouldStartTitleBarDragging`, passing a `null` target along with `button: 0` returns `true`. The tests currently assert this real behavior (`toBe(true)`).
+
+### Verification
+- `npm ci` ✅
+- `npx tsc -b` ✅
+- `npm run test` ✅
+
+```
+ Test Files  26 passed (26)
+      Tests  120 passed | 1 skipped (121)
+```
